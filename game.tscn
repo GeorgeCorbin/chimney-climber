@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://c8qpjvx8lx00u"]
+
+[ext_resource type="Script" uid="uid://cq5vs6eescqru" path="res://camera_script.gd" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://8wpa1b8hrr1r" path="res://player_script.gd" id="2_feb5d"]
+[ext_resource type="Script" uid="uid://bblb21xdxrg54" path="res://WallLooper.gd" id="2_ryrav"]
+[ext_resource type="Script" uid="uid://drs7cflrtbm8m" path="res://hud.gd" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://cibwrsyf3ituf" path="res://coin_spawner.gd" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://8hwo3hh3vxsf" path="res://Coin.tscn" id="5_7jktm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
+size = Vector2(180, 4000)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0xm2m"]
+size = Vector2(180, 4000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(180, 4000)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h2yge"]
+size = Vector2(180, 4000)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dm0k"]
+radius = 25.0
+height = 50.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1bvp3"]
+size = Vector2(50, 50)
+
+[node name="Game" type="Node2D" unique_id=286209830]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=652228119]
+visible = false
+script = ExtResource("1_e2o6t")
+follow_node = NodePath("../World/Player")
+
+[node name="World" type="Node2D" parent="." unique_id=2044397103]
+script = ExtResource("2_ryrav")
+left_a_path = NodePath("LeftWallA")
+left_b_path = NodePath("LeftWallB")
+right_a_path = NodePath("RightWallA")
+right_b_path = NodePath("RightWallB")
+player_path = NodePath("Player")
+
+[node name="LeftWallA" type="StaticBody2D" parent="World" unique_id=1332721228]
+position = Vector2(-450, 960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/LeftWallA" unique_id=1574033079]
+position = Vector2(0, -2000)
+shape = SubResource("RectangleShape2D_7dm0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/LeftWallA" unique_id=696365058]
+modulate = Color(0.40108547, 0.17328182, 0.8253754, 1)
+position = Vector2(0, -2000)
+texture = SubResource("PlaceholderTexture2D_0xm2m")
+
+[node name="LeftWallB" type="StaticBody2D" parent="World" unique_id=714291460]
+position = Vector2(-450, -2960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/LeftWallB" unique_id=583810999]
+position = Vector2(0, -2000)
+shape = SubResource("RectangleShape2D_7dm0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/LeftWallB" unique_id=1008632483]
+modulate = Color(0, 0.38039216, 0.6392157, 1)
+position = Vector2(0, -2000)
+texture = SubResource("PlaceholderTexture2D_0xm2m")
+
+[node name="RightWallA" type="StaticBody2D" parent="World" unique_id=1496680647]
+position = Vector2(450, 960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/RightWallA" unique_id=1710045969]
+position = Vector2(0, -2000)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/RightWallA" unique_id=1581318261]
+modulate = Color(0.874156, 0.52429944, 0.21414211, 1)
+position = Vector2(0, -2000)
+texture = SubResource("PlaceholderTexture2D_h2yge")
+
+[node name="RightWallB" type="StaticBody2D" parent="World" unique_id=83327760]
+position = Vector2(450, -2960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/RightWallB" unique_id=1060408078]
+position = Vector2(0, -2000)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/RightWallB" unique_id=1179596755]
+modulate = Color(0.13725491, 0.38039216, 0, 1)
+position = Vector2(0, -2000)
+texture = SubResource("PlaceholderTexture2D_h2yge")
+
+[node name="Player" type="CharacterBody2D" parent="World" unique_id=962922376]
+position = Vector2(0, 950)
+script = ExtResource("2_feb5d")
+left_wall_path = NodePath("../LeftWallA")
+right_wall_path = NodePath("../RightWallA")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player" unique_id=1055689105]
+shape = SubResource("CapsuleShape2D_7dm0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Player/CollisionShape2D" unique_id=276641410]
+modulate = Color(0.9607843, 0.38039216, 0.6392157, 1)
+texture = SubResource("PlaceholderTexture2D_1bvp3")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1324117842]
+script = ExtResource("3_feb5d")
+
+[node name="CoinLabel" type="Label" parent="HUD" unique_id=2032783727]
+offset_left = 50.0
+offset_top = 150.0
+offset_right = 90.0
+offset_bottom = 238.0
+theme_override_font_sizes/font_size = 64
+
+[node name="HeightLabel" type="Label" parent="HUD" unique_id=718213179]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 90.0
+offset_bottom = 138.0
+theme_override_font_sizes/font_size = 64
+
+[node name="CoinSpawner" type="Node2D" parent="." unique_id=1102123763]
+script = ExtResource("4_fc0e3")
+coin_scene = ExtResource("5_7jktm")

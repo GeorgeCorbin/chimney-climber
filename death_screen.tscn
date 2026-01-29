@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cxx8jg24luavk"]
+
+[ext_resource type="Script" uid="uid://880yxj2xc67v" path="res://death_screen.gd" id="1_if853"]
+
+[node name="DeathScreen" type="Control" unique_id=1098436851]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_if853")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2056360784]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+color = Color(0.695662, 0.19207785, 0.20249021, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=411452986]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 400.0
+offset_right = 817.0
+offset_bottom = 1595.0
+alignment = 1
+
+[node name="DeathLabel" type="Label" parent="VBoxContainer" unique_id=1191148313]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="Button" parent="VBoxContainer" unique_id=1849056115]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "Menu"
+
+[node name="RestartButton" type="Button" parent="VBoxContainer" unique_id=174943945]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "Restart"
+
+[node name="RunHeightLabel" type="Label" parent="VBoxContainer" unique_id=1279232296]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="RunCoinsLabel" type="Label" parent="VBoxContainer" unique_id=1048157525]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="BestHeightLabel" type="Label" parent="VBoxContainer" unique_id=1816362280]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="TotalCoinsLabel" type="Label" parent="VBoxContainer" unique_id=752543078]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "You Died"
+horizontal_alignment = 1

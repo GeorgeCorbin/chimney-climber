@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://8hwo3hh3vxsf"]
+
+[ext_resource type="Script" uid="uid://6wp6ings8fr0" path="res://coin.gd" id="1_h5dih"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ou7jl"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ufda5"]
+
+[node name="Coin" type="Area2D" unique_id=1392415730]
+collision_layer = 2
+script = ExtResource("1_h5dih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598614959]
+shape = SubResource("CircleShape2D_ou7jl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1981047801]
+modulate = Color(0.8672423, 0.8670306, 0, 1)
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_ufda5")
