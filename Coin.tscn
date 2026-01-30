@@ -1,12 +1,41 @@
 [gd_scene format=3 uid="uid://8hwo3hh3vxsf"]
 
 [ext_resource type="Script" uid="uid://6wp6ings8fr0" path="res://coin.gd" id="1_h5dih"]
+[ext_resource type="Texture2D" uid="uid://dwulhda6uu3v6" path="res://chimney climber sprites/coin/frame0.png" id="2_vjcl1"]
+[ext_resource type="Texture2D" uid="uid://bx520063md0ew" path="res://chimney climber sprites/coin/frame1.png" id="3_xe4v2"]
+[ext_resource type="Texture2D" uid="uid://cxxbbwmraad8r" path="res://chimney climber sprites/coin/frame2.png" id="4_esark"]
+[ext_resource type="Texture2D" uid="uid://duqrdjvxknq0j" path="res://chimney climber sprites/coin/frame3.png" id="5_5xfxd"]
+[ext_resource type="Texture2D" uid="uid://dvp52fk7nqb2g" path="res://chimney climber sprites/coin/frame4.png" id="6_eys37"]
+[ext_resource type="Texture2D" uid="uid://cvptcydnucwmp" path="res://chimney climber sprites/coin/frame5.png" id="7_o2a8u"]
+[ext_resource type="Texture2D" uid="uid://b4nkx5cd5gbe" path="res://chimney climber sprites/coin/frame6.png" id="8_b0knj"]
+[ext_resource type="Texture2D" uid="uid://niflryj3w72u" path="res://chimney climber sprites/coin/frame7.png" id="9_mt5t0"]
+[ext_resource type="Texture2D" uid="uid://bpfdprkxk3hre" path="res://chimney climber sprites/coin/frame8.png" id="10_rk4q4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ou7jl"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ufda5"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_4k02p"]
+frames = 9
+frame_0/texture = ExtResource("2_vjcl1")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("3_xe4v2")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("4_esark")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("5_5xfxd")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("6_eys37")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("7_o2a8u")
+frame_5/duration = 0.1
+frame_6/texture = ExtResource("8_b0knj")
+frame_6/duration = 0.1
+frame_7/texture = ExtResource("9_mt5t0")
+frame_7/duration = 0.1
+frame_8/texture = ExtResource("10_rk4q4")
+frame_8/duration = 0.1
 
 [node name="Coin" type="Area2D" unique_id=1392415730]
+scale = Vector2(3, 3)
 collision_layer = 2
 script = ExtResource("1_h5dih")
 
@@ -15,5 +44,4 @@ shape = SubResource("CircleShape2D_ou7jl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1981047801]
 modulate = Color(0.8672423, 0.8670306, 0, 1)
-scale = Vector2(20, 20)
-texture = SubResource("PlaceholderTexture2D_ufda5")
+texture = SubResource("AnimatedTexture_4k02p")

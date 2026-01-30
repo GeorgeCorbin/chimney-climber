@@ -9,8 +9,8 @@ extends Node2D
 @export var spawn_spacing_max: float = 520.0
 
 # chimney bounds (set these to match your playable gap)
-@export var min_x: float = 200.0
-@export var max_x: float = 880.0
+@export var min_x: float = -320.0 #200
+@export var max_x: float = 320 #880
 
 @onready var cam: Camera2D = get_node(camera_path) as Camera2D
 
@@ -31,6 +31,7 @@ func _process(_delta: float) -> void:
 	# If camera moved up enough, keep spawning further up
 	while next_spawn_y > cam.global_position.y - spawn_ahead:
 		_spawn_coin_at(next_spawn_y)
+		print(next_spawn_y)
 		next_spawn_y -= randf_range(spawn_spacing_min, spawn_spacing_max)
 
 func _spawn_coin_at(y: float) -> void:

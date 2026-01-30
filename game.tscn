@@ -2,16 +2,77 @@
 
 [ext_resource type="Script" uid="uid://cq5vs6eescqru" path="res://camera_script.gd" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://8wpa1b8hrr1r" path="res://player_script.gd" id="2_feb5d"]
+[ext_resource type="Script" uid="uid://jw060m5r82ig" path="res://bg.gd" id="2_j5wjh"]
 [ext_resource type="Script" uid="uid://bblb21xdxrg54" path="res://WallLooper.gd" id="2_ryrav"]
 [ext_resource type="Script" uid="uid://drs7cflrtbm8m" path="res://hud.gd" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://b5gy1ytxyt4gm" path="res://chimney climber sprites/Dungeon_brick_wall_grey.png.png" id="3_vef74"]
 [ext_resource type="Script" uid="uid://cibwrsyf3ituf" path="res://coin_spawner.gd" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://8hwo3hh3vxsf" path="res://Coin.tscn" id="5_7jktm"]
+[ext_resource type="Texture2D" uid="uid://c5jiskxlxq2l5" path="res://chimney climber sprites/bricks.png" id="6_iotsf"]
+[ext_resource type="Texture2D" uid="uid://cp6hfj7jhbkx1" path="res://chimney climber sprites/bricks_128.png" id="6_lc2xo"]
+[ext_resource type="Script" uid="uid://b5eukoua7jwdp" path="res://wall_visuals.gd" id="6_mfdv2"]
+[ext_resource type="Texture2D" uid="uid://b02x4cmk6popi" path="res://chimney climber sprites/bricks_256.png" id="7_iotsf"]
+[ext_resource type="Texture2D" uid="uid://ddcdimgk5gwrn" path="res://chimney climber sprites/bricks_crack_128.png" id="8_lc2xo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
-size = Vector2(180, 4000)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hve3p"]
+texture = ExtResource("6_iotsf")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0xm2m"]
-size = Vector2(180, 4000)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_215e1"]
+texture = ExtResource("6_lc2xo")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lc2xo"]
+texture = ExtResource("7_iotsf")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sc4i"]
+texture = ExtResource("8_lc2xo")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mfdv2"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_hve3p")
+sources/1 = SubResource("TileSetAtlasSource_215e1")
+sources/3 = SubResource("TileSetAtlasSource_lc2xo")
+sources/4 = SubResource("TileSetAtlasSource_7sc4i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(180, 4000)
@@ -19,9 +80,16 @@ size = Vector2(180, 4000)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h2yge"]
 size = Vector2(180, 4000)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
+size = Vector2(180, 4000)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0xm2m"]
+size = Vector2(180, 4000)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dm0k"]
-radius = 25.0
-height = 50.0
+custom_solver_bias = 0.277
+radius = 36.0
+height = 150.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1bvp3"]
 size = Vector2(50, 50)
@@ -33,73 +101,109 @@ visible = false
 script = ExtResource("1_e2o6t")
 follow_node = NodePath("../World/Player")
 
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=959797196]
+scroll_scale = Vector2(0.3, 0.3)
+
+[node name="BG" type="Node2D" parent="Parallax2D" unique_id=1238900162]
+position = Vector2(540, 1080)
+scale = Vector2(0.56, 1)
+script = ExtResource("2_j5wjh")
+camera_path = NodePath("../../Camera2D")
+
+[node name="BG1" type="Sprite2D" parent="Parallax2D/BG" unique_id=877805109]
+position = Vector2(0, -4)
+texture = ExtResource("3_vef74")
+
+[node name="BG2" type="Sprite2D" parent="Parallax2D/BG" unique_id=1370110482]
+position = Vector2(0, 956)
+texture = ExtResource("3_vef74")
+
+[node name="BG3" type="Sprite2D" parent="Parallax2D/BG" unique_id=896626661]
+position = Vector2(0, 1965)
+texture = ExtResource("3_vef74")
+
 [node name="World" type="Node2D" parent="." unique_id=2044397103]
 script = ExtResource("2_ryrav")
+left_a_path = NodePath("WallVisuals/LeftWallA")
+left_b_path = NodePath("WallVisuals/LeftWallB")
+right_a_path = NodePath("WallVisuals/RightWallA")
+right_b_path = NodePath("WallVisuals/RightWallB")
+player_path = NodePath("Player")
+
+[node name="WallVisuals" type="TileMapLayer" parent="World" unique_id=718662497]
+tile_set = SubResource("TileSet_mfdv2")
+collision_enabled = false
+script = ExtResource("6_mfdv2")
 left_a_path = NodePath("LeftWallA")
 left_b_path = NodePath("LeftWallB")
 right_a_path = NodePath("RightWallA")
 right_b_path = NodePath("RightWallB")
-player_path = NodePath("Player")
+inside_nudge_px = -70.0
 
-[node name="LeftWallA" type="StaticBody2D" parent="World" unique_id=1332721228]
-position = Vector2(-450, 960)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/LeftWallA" unique_id=1574033079]
-position = Vector2(0, -2000)
-shape = SubResource("RectangleShape2D_7dm0k")
-
-[node name="Sprite2D" type="Sprite2D" parent="World/LeftWallA" unique_id=696365058]
-modulate = Color(0.40108547, 0.17328182, 0.8253754, 1)
-position = Vector2(0, -2000)
-texture = SubResource("PlaceholderTexture2D_0xm2m")
-
-[node name="LeftWallB" type="StaticBody2D" parent="World" unique_id=714291460]
-position = Vector2(-450, -2960)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/LeftWallB" unique_id=583810999]
-position = Vector2(0, -2000)
-shape = SubResource("RectangleShape2D_7dm0k")
-
-[node name="Sprite2D" type="Sprite2D" parent="World/LeftWallB" unique_id=1008632483]
-modulate = Color(0, 0.38039216, 0.6392157, 1)
-position = Vector2(0, -2000)
-texture = SubResource("PlaceholderTexture2D_0xm2m")
-
-[node name="RightWallA" type="StaticBody2D" parent="World" unique_id=1496680647]
+[node name="RightWallA" type="StaticBody2D" parent="World/WallVisuals" unique_id=1496680647]
 position = Vector2(450, 960)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/RightWallA" unique_id=1710045969]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WallVisuals/RightWallA" unique_id=1710045969]
 position = Vector2(0, -2000)
 shape = SubResource("RectangleShape2D_ig7tw")
 
-[node name="Sprite2D" type="Sprite2D" parent="World/RightWallA" unique_id=1581318261]
-modulate = Color(0.874156, 0.52429944, 0.21414211, 1)
+[node name="Sprite2D" type="Sprite2D" parent="World/WallVisuals/RightWallA" unique_id=1581318261]
+visible = false
 position = Vector2(0, -2000)
 texture = SubResource("PlaceholderTexture2D_h2yge")
 
-[node name="RightWallB" type="StaticBody2D" parent="World" unique_id=83327760]
+[node name="RightWallB" type="StaticBody2D" parent="World/WallVisuals" unique_id=83327760]
 position = Vector2(450, -2960)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/RightWallB" unique_id=1060408078]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WallVisuals/RightWallB" unique_id=1060408078]
 position = Vector2(0, -2000)
 shape = SubResource("RectangleShape2D_ig7tw")
 
-[node name="Sprite2D" type="Sprite2D" parent="World/RightWallB" unique_id=1179596755]
+[node name="Sprite2D" type="Sprite2D" parent="World/WallVisuals/RightWallB" unique_id=1179596755]
+visible = false
 modulate = Color(0.13725491, 0.38039216, 0, 1)
 position = Vector2(0, -2000)
 texture = SubResource("PlaceholderTexture2D_h2yge")
 
+[node name="LeftWallA" type="StaticBody2D" parent="World/WallVisuals" unique_id=1332721228]
+position = Vector2(-450, 960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WallVisuals/LeftWallA" unique_id=1574033079]
+position = Vector2(0, -2000)
+shape = SubResource("RectangleShape2D_7dm0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/WallVisuals/LeftWallA" unique_id=696365058]
+visible = false
+modulate = Color(0.40108547, 0.17328182, 0.8253754, 1)
+position = Vector2(0, -2000)
+texture = SubResource("PlaceholderTexture2D_0xm2m")
+
+[node name="LeftWallB" type="StaticBody2D" parent="World/WallVisuals" unique_id=714291460]
+position = Vector2(-450, -2960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WallVisuals/LeftWallB" unique_id=583810999]
+position = Vector2(0, -2000)
+shape = SubResource("RectangleShape2D_7dm0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/WallVisuals/LeftWallB" unique_id=1008632483]
+visible = false
+modulate = Color(0, 0.38039216, 0.6392157, 1)
+position = Vector2(0, -2000)
+texture = SubResource("PlaceholderTexture2D_0xm2m")
+
 [node name="Player" type="CharacterBody2D" parent="World" unique_id=962922376]
 position = Vector2(0, 950)
 script = ExtResource("2_feb5d")
-left_wall_path = NodePath("../LeftWallA")
-right_wall_path = NodePath("../RightWallA")
+left_wall_path = NodePath("../WallVisuals/LeftWallA")
+right_wall_path = NodePath("../WallVisuals/RightWallA")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player" unique_id=1055689105]
 shape = SubResource("CapsuleShape2D_7dm0k")
 
 [node name="Sprite2D" type="Sprite2D" parent="World/Player/CollisionShape2D" unique_id=276641410]
 modulate = Color(0.9607843, 0.38039216, 0.6392157, 1)
+position = Vector2(0, -0.49998856)
+scale = Vector2(1, 2.7000005)
 texture = SubResource("PlaceholderTexture2D_1bvp3")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1324117842]
